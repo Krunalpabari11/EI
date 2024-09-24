@@ -1,49 +1,64 @@
 import java.util.ArrayList;
 import java.util.List;
-
-class NewsAgency {
-    private List<NewsChannel> observers = new ArrayList<>();
-    private String news;
-    public void attach(NewsChannel observer) {
-        observers.add(observer);
-    }
-    public void detach(NewsChannel observer) {
-        observers.remove(observer);
-    }
-    public void setNews(String news) {
-        this.news = news;
+interface WeatherData {
+    void addObserver(Observer observer);
+    void removeObserver(Observer observer);
+    void notifyObservers();
+}
+interface Observer {
+    void update(float temperature);
+}
+class WeatherStation implements WeatherData {
+    private List<Observer> observers = new ArrayList<>();
+    private float temperature;
+    public void setTemperature(float temperature) {
+        this.temperature = temperature;
         notifyObservers();
     }
-    private void notifyObservers() {
-        for (NewsChannel observer : observers) {
-            observer.update(news);
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update(temperature);
         }
     }
 }
-interface NewsChannel {
-    void update(String news);
-}
-class TVChannel implements NewsChannel {
-    private String name;
-
-    public TVChannel(String name) {
-        this.name = name;
-    }
+class PhoneDisplay implements Observer {
     @Override
-    public void update(String news) {
-        System.out.println(name + " received news: " + news);
+    public void update(float temperature) {
+        System.out.println("Phone Display: Current temperature is " + temperature + "°C");
     }
 }
-
+class TVDisplay implements Observer {
+    @Override
+    public void update(float temperature) {
+        System.out.println("TV Display: Current temperature is " + temperature + "°C");
+    }
+}
+class WeatherApp implements Observer {
+    @Override
+    public void update(float temperature) {
+        System.out.println("Weather App: Current temperature is " + temperature + "°C");
+    }
+}
 public class ObserverPatternDemo {
     public static void main(String[] args) {
-        NewsAgency agency = new NewsAgency();
-        NewsChannel channel1 = new TVChannel("CNN");
-        NewsChannel channel2 = new TVChannel("BBC");
-        agency.attach(channel1);
-        agency.attach(channel2);
-        agency.setNews("Breaking: Major earthquake in California!");
-        agency.detach(channel2);
-        agency.setNews("Update: Rescue efforts underway.");
+        WeatherStation weatherStation = new WeatherStation();
+        PhoneDisplay phoneDisplay = new PhoneDisplay();
+        TVDisplay tvDisplay = new TVDisplay();
+        WeatherApp weatherApp = new WeatherApp();
+        weatherStation.addObserver(phoneDisplay);
+        weatherStation.addObserver(tvDisplay);
+        weatherStation.addObserver(weatherApp);
+        weatherStation.setTemperature(25.0f);
+        weatherStation.setTemperature(30.0f);
+        weatherStation.setTemperature(22.5f);
     }
 }

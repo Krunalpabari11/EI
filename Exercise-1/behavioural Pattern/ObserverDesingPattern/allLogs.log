@@ -1,0 +1,18 @@
+Sep 24, 2024 8:35:40 PM Main main
+INFO: Starting Weather Station Observer Demo...
+Sep 24, 2024 8:36:15 PM Main main
+WARNING: Invalid temperature input: eixt
+Sep 24, 2024 8:36:18 PM Main main
+INFO: Shutting down the Weather Station system.
+Sep 24, 2024 8:36:18 PM Main main
+INFO: Weather Station Observer Demo has ended.
+Sep 24, 2024 8:37:45 PM Main main
+INFO: Starting Weather Station Observer Demo...
+Sep 24, 2024 8:37:57 PM Main main
+INFO: Temperature set to 30.0°C
+Sep 24, 2024 8:38:00 PM Main main
+INFO: Temperature set to 50.5°C
+Sep 24, 2024 8:38:07 PM Main main
+INFO: Shutting down the Weather Station system.
+Sep 24, 2024 8:38:07 PM Main main
+INFO: Weather Station Observer Demo has ended.

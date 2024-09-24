@@ -1,0 +1,12 @@
+Sep 24, 2024 9:30:25 PM Main main
+INFO: Starting Adapter Pattern Demo...
+Sep 24, 2024 9:30:32 PM Main main
+INFO: European device powered on using European socket.
+Sep 24, 2024 9:30:36 PM Main main
+INFO: European device powered on using European socket.
+Sep 24, 2024 9:30:43 PM Main main
+INFO: European device powered on using American plug with adapter.
+Sep 24, 2024 9:30:45 PM Main main
+INFO: Exiting the Adapter Pattern system.
+Sep 24, 2024 9:30:45 PM Main main
+INFO: Adapter Pattern Demo has ended.
